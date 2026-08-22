@@ -10,14 +10,8 @@ node_modules/
 !.env.example
 
 # Internal Documentation & Specifications (Root Only)
-/docs/
+/project-docs/
 /app-screenshots/
-
-# Explicitly keep website source code
-!src/pages/docs/
-!src/components/docs/
-!src/data/docs.ts
-!src/layouts/DocsLayout.astro
 
 # AI Agents & IDE Customizations
 AGENTS.md
