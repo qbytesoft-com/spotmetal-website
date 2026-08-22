@@ -1,0 +1,143 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import DocsSidebar from '../../components/docs/DocsSidebar.astro';
+import TableOfContents from '../../components/docs/TableOfContents.astro';
+import { docArticles, docCategories, type DocArticle } from '../../data/docs';
+
+export function getStaticPaths() {
+  return Object.keys(docArticles).map(slug => ({
+    params: { slug },
+    props: { article: docArticles[slug] }
+  }));
+}
+
+interface Props {
+  article: DocArticle;
+}
+
+const { article } = Astro.props;
+
+// Calculate Next & Prev Articles
+const allSlugs = Object.keys(docArticles);
+const currentIndex = allSlugs.indexOf(article.slug);
+const prevArticle = currentIndex > 0 ? docArticles[allSlugs[currentIndex - 1]] : null;
+const nextArticle = currentIndex < allSlugs.length - 1 ? docArticles[allSlugs[currentIndex + 1]] : null;
+---
+
+<DocsLayout 
+  title={article.title}
+  description={article.description}
+>
+  <div class="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start w-full max-w-full min-w-0 overflow-x-hidden">
+    <!-- Left Navigation Sidebar (Desktop + Mobile Drawer) -->
+    <DocsSidebar currentSlug={article.slug} />
+
+    <!-- Center Content Canvas -->
+    <article class="flex-1 w-full max-w-4xl xl:max-w-5xl space-y-10 py-4 sm:py-6 min-w-0 overflow-x-hidden">
+      <!-- Breadcrumb Trail -->
+      <nav class="flex items-center gap-2 text-xs sm:text-sm font-mono text-slate-400 overflow-x-auto whitespace-nowrap pb-1">
+        <a href="/docs" class="hover:text-white transition-colors">Docs</a>
+        <span>/</span>
+        <span class="text-slate-500">{article.categoryTitle}</span>
+        <span>/</span>
+        <span class="text-amber-400 font-semibold">{article.title}</span>
+      </nav>
+
+      <!-- Article Header -->
+      <div class="space-y-4 pb-8 border-b border-white/10">
+        <div class="tag-label text-[#FF5E36] font-mono">
+          {article.categoryTitle}
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-title text-white font-medium tracking-tight leading-tight">
+          {article.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-mono text-slate-400 pt-2">
+          <span>⏱️ {article.readingTime}</span>
+          <span>•</span>
+          <span>📅 {article.lastUpdated}</span>
+        </div>
+      </div>
+
+      <!-- Mobile On-Page Table of Contents Dropdown (Visible on <xl screens) -->
+      {article.headings.length > 0 && (
+        <div class="xl:hidden p-4 rounded-2xl bg-[#1A1B20] border border-white/10 space-y-2">
+          <details class="group">
+            <summary class="flex items-center justify-between text-xs font-mono font-bold uppercase tracking-wider text-slate-300 cursor-pointer list-none">
+              <span>On This Page ({article.headings.length} Sections)</span>
+              <span class="text-amber-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <ul class="pt-3 space-y-2 text-xs font-sans border-t border-white/10 mt-3 pl-2">
+              {article.headings.map(h => (
+                <li>
+                  <a href={`#${h.id}`} class="block text-slate-300 hover:text-amber-400 py-0.5">
+                    • {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
+      )}
+
+      <!-- Main Article Prose -->
+      <div id="docs-prose-container" class="docs-content max-w-none font-sans text-slate-200 leading-[1.85] space-y-6 overflow-hidden">
+        <Fragment set:html={article.content} />
+      </div>
+
+      <!-- Next / Previous Navigation Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-10 border-t border-white/10 mt-16">
+        {prevArticle ? (
+          <a 
+            href={`/docs/${prevArticle.slug}`}
+            class="p-5 sm:p-8 rounded-3xl bg-[#1A1B20] border border-white/10 hover:border-amber-500/40 transition-all group space-y-2 block shadow-lg"
+          >
+            <div class="text-xs font-mono text-slate-400">← PREVIOUS</div>
+            <div class="text-base sm:text-lg font-bold text-white font-title group-hover:text-amber-400 transition-colors">
+              {prevArticle.title}
+            </div>
+          </a>
+        ) : <div />}
+
+        {nextArticle ? (
+          <a 
+            href={`/docs/${nextArticle.slug}`}
+            class="p-5 sm:p-8 rounded-3xl bg-[#1A1B20] border border-white/10 hover:border-amber-500/40 transition-all group space-y-2 block text-left sm:text-right shadow-lg"
+          >
+            <div class="text-xs font-mono text-slate-400">NEXT →</div>
+            <div class="text-base sm:text-lg font-bold text-white font-title group-hover:text-amber-400 transition-colors">
+              {nextArticle.title}
+            </div>
+          </a>
+        ) : <div />}
+      </div>
+    </article>
+
+    <!-- Right Column: Table of Contents (Desktop xl+) -->
+    <TableOfContents headings={article.headings} />
+  </div>
+</DocsLayout>
+
+<script>
+  // Add copy button to pre code blocks
+  document.querySelectorAll('pre').forEach(pre => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'relative group my-6 overflow-x-auto';
+    pre.parentNode?.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+
+    const btn = document.createElement('button');
+    btn.className = 'absolute top-3 right-3 sm:top-4 sm:right-4 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 text-xs font-mono transition-all border border-white/10 flex items-center gap-1.5 shadow-md';
+    btn.innerHTML = '<span>📋</span><span>Copy</span>';
+
+    btn.addEventListener('click', async () => {
+      const code = pre.innerText;
+      await navigator.clipboard.writeText(code);
+      btn.innerHTML = '<span class="text-emerald-400">✓</span><span class="text-emerald-400">Copied!</span>';
+      setTimeout(() => {
+        btn.innerHTML = '<span>📋</span><span>Copy</span>';
+      }, 2000);
+    });
+
+    wrapper.appendChild(btn);
+  });
+</script>

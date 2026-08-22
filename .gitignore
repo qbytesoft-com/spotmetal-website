@@ -9,9 +9,14 @@ node_modules/
 .env.*
 !.env.example
 
-# Internal Documentation & Specifications
-docs/
-app-screenshots/
+# Internal Documentation & Specifications (Root Only)
+/docs/
+/app-screenshots/
+
+# Explicitly keep website source code
+!src/pages/docs/
+!src/components/docs/
+!src/data/docs.ts
 
 # AI Agents & IDE Customizations
 AGENTS.md
@@ -30,4 +35,3 @@ pnpm-debug.log*
 # System & OS Files
 .DS_Store
 Thumbs.db
-node_modules

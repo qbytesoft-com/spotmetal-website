@@ -1,0 +1,88 @@
+---
+interface Heading {
+  id: string;
+  text: string;
+  level: number;
+}
+
+interface Props {
+  headings?: Heading[];
+}
+
+const { headings = [] } = Astro.props;
+
+const whatsappUrl = "https://api.whatsapp.com/send/?phone=8801611032464&text=Hello+Spotmetal+Support%2C+I+need+help+to+setup.&type=phone_number&app_absent=0";
+---
+
+<aside class="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-24 lg:h-[calc(100vh-6rem)] overflow-y-auto pl-6 space-y-10 select-none py-6 hidden xl:block custom-scrollbar">
+  <!-- On-Page Headings -->
+  {headings.length > 0 && (
+    <div class="space-y-4">
+      <div class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+        On This Page
+      </div>
+      <ul id="toc-list" class="space-y-2.5 text-xs sm:text-sm font-sans border-l border-white/10 pl-4">
+        {headings.map(h => (
+          <li>
+            <a 
+              href={`#${h.id}`}
+              class="toc-link block text-slate-400 hover:text-amber-400 transition-colors line-clamp-1 py-1 leading-snug"
+              data-id={h.id}
+            >
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <!-- Quick Developer Support Card -->
+  <div class="p-6 rounded-3xl bg-[#1A1B20] border border-white/10 space-y-5 shadow-lg">
+    <div class="text-xs font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+      <span class="text-sm">💬</span>
+      <span>Need Help?</span>
+    </div>
+    <p class="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
+      Chat directly with a SpotMetal integration engineer for formula setup assistance.
+    </p>
+    <a 
+      href={whatsappUrl} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="block w-full text-center py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-sans font-bold text-xs sm:text-sm transition-colors shadow-md"
+    >
+      Ask on WhatsApp ↗
+    </a>
+    <a 
+      href="mailto:support@qbytesoft.com" 
+      class="block text-center text-xs font-mono text-slate-400 hover:text-white transition-colors pt-1"
+    >
+      support@qbytesoft.com
+    </a>
+  </div>
+</aside>
+
+<script>
+  // Active Heading Scroll Spy
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        document.querySelectorAll('.toc-link').forEach(link => {
+          if (link.getAttribute('data-id') === id) {
+            link.classList.add('text-amber-400', 'font-bold', 'pl-1.5');
+            link.classList.remove('text-slate-400');
+          } else {
+            link.classList.remove('text-amber-400', 'font-bold', 'pl-1.5');
+            link.classList.add('text-slate-400');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+
+  document.querySelectorAll('h2[id], h3[id]').forEach(heading => {
+    observer.observe(heading);
+  });
+</script>

@@ -1,0 +1,146 @@
+---
+import { docCategories } from '../../data/docs';
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug = "installation-and-onboarding" } = Astro.props;
+---
+
+<!-- 1. Desktop Sticky Sidebar (Visible lg+) -->
+<aside class="hidden lg:block w-80 flex-shrink-0 sticky top-24 h-[calc(100vh-6rem)] overflow-y-auto pr-6 space-y-10 select-none py-6 custom-scrollbar">
+  {docCategories.map(cat => (
+    <div class="space-y-3">
+      <!-- Category Header -->
+      <div class="flex items-center gap-2.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+        <span class="text-sm">{cat.icon}</span>
+        <span>{cat.title}</span>
+      </div>
+
+      <!-- Articles Tree -->
+      <ul class="space-y-1.5 pl-4 border-l border-white/10 text-sm font-sans">
+        {cat.articles.map(art => {
+          const isActive = art.slug === currentSlug;
+          return (
+            <li>
+              <a 
+                href={`/docs/${art.slug}`}
+                class={`block py-2 px-3.5 rounded-xl transition-all leading-snug ${
+                  isActive 
+                    ? 'bg-amber-500/15 border border-amber-500/40 text-amber-300 font-semibold shadow-sm' 
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {art.title}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ))}
+</aside>
+
+<!-- 2. Mobile Slide-Out Drawer (Visible on tap <lg) -->
+<div id="docs-mobile-drawer" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden lg:hidden">
+  <div class="fixed inset-y-0 left-0 w-[85%] max-w-sm bg-[#131417] border-r border-white/10 p-6 overflow-y-auto shadow-2xl flex flex-col justify-between space-y-6">
+    <div class="space-y-6">
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <a href="/" class="flex items-center gap-3 group">
+          <img src="/spotmetal-3d-icon.jpg" alt="SpotMetal 3D Icon" class="w-7 h-7 rounded-lg object-cover group-hover:scale-105 transition-transform" />
+          <span class="font-title font-bold text-white text-base group-hover:text-amber-400 transition-colors">SpotMetal</span>
+        </a>
+        <button 
+          id="docs-mobile-drawer-close"
+          type="button" 
+          class="p-2 rounded-xl bg-white/5 text-slate-400 hover:text-white"
+          aria-label="Close drawer"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Mobile Category Navigation List -->
+      <div class="space-y-8 select-none">
+        {docCategories.map(cat => (
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+              <span>{cat.icon}</span>
+              <span>{cat.title}</span>
+            </div>
+            <ul class="space-y-1 pl-3 border-l border-white/10 text-sm font-sans">
+              {cat.articles.map(art => {
+                const isActive = art.slug === currentSlug;
+                return (
+                  <li>
+                    <a 
+                      href={`/docs/${art.slug}`}
+                      class={`block py-1.5 px-3 rounded-lg transition-all ${
+                        isActive 
+                          ? 'bg-amber-500/20 border border-amber-500/40 text-amber-300 font-semibold' 
+                          : 'text-slate-300 hover:text-white'
+                      }`}
+                    >
+                      {art.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Footer Support Link -->
+    <div class="pt-6 border-t border-white/10 space-y-3">
+      <a 
+        href="https://api.whatsapp.com/send/?phone=8801611032464&text=Hello+Spotmetal+Support%2C+I+need+help+to+setup.&type=phone_number&app_absent=0"
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="block w-full py-2.5 text-center rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs"
+      >
+        💬 WhatsApp Live Engineer
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Floating Mobile Navigation Button (Bottom Left on <lg screens) -->
+<div class="fixed bottom-5 left-5 z-40 lg:hidden">
+  <button 
+    id="floating-docs-menu-btn"
+    type="button" 
+    class="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#1A1B20]/95 border border-amber-500/40 text-amber-300 font-sans font-bold text-xs shadow-2xl shadow-black/80 backdrop-blur-xl hover:scale-105 transition-transform"
+  >
+    <span>📑</span>
+    <span>Browse Topics</span>
+  </button>
+</div>
+
+<script>
+  const drawer = document.getElementById('docs-mobile-drawer');
+  const openBtnHeader = document.getElementById('docs-sidebar-toggle-btn');
+  const openBtnFloat = document.getElementById('floating-docs-menu-btn');
+  const closeBtn = document.getElementById('docs-mobile-drawer-close');
+
+  function openDrawer() {
+    drawer?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  openBtnHeader?.addEventListener('click', openDrawer);
+  openBtnFloat?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+
+  drawer?.addEventListener('click', (e) => {
+    if (e.target === drawer) closeDrawer();
+  });
+</script>
