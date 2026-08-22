@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Privacy Policy — SpotMetal"
+  description="SpotMetal Privacy Policy. Fully compliant with Shopify App Store requirements, GDPR, and CCPA."
+>
+  <Header />
+
+  <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-12">
+    <!-- Breadcrumb & Header -->
+    <div class="space-y-4 pb-8 border-b border-white/10">
+      <nav class="flex items-center gap-2 text-xs font-mono text-slate-400">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-amber-400 font-semibold">Privacy Policy</span>
+      </nav>
+
+      <div class="tag-label text-[#FF5E36] font-mono">
+        LEGAL & COMPLIANCE
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-title text-white font-medium tracking-tight">
+        SpotMetal Privacy Policy
+      </h1>
+
+      <div class="flex items-center gap-4 text-xs font-mono text-slate-400 pt-1">
+        <span>📅 Effective Date: January 1, 2026</span>
+        <span>•</span>
+        <span>🔒 GDPR & CCPA Compliant</span>
+      </div>
+    </div>
+
+    <!-- Main Legal Content -->
+    <div class="docs-content max-w-none font-sans text-slate-200 leading-[1.85] space-y-8">
+      <p class="lead text-lg text-slate-200">
+        SpotMetal Technologies ("SpotMetal", "we", "us", or "our") is committed to protecting the privacy and security of merchants, store administrators, and customers. This Privacy Policy describes how we collect, store, process, and protect information when you install or use the SpotMetal application ("App") from the Shopify App Store.
+      </p>
+
+      <h2>1. Information We Collect</h2>
+      <p>When you install and authorize the SpotMetal App via Shopify OAuth, we collect and process specific categories of data necessary to provide live precious metal pricing and trade-in workflows:</p>
+
+      <h3>A. Merchant & Store Data</h3>
+      <ul>
+        <li><strong>Shop Information:</strong> Store primary domain, myshopify.com URL, store name, email address, store owner name, country, currency, and timezone.</li>
+        <li><strong>Product & Inventory Data:</strong> Product IDs, variant IDs, SKU codes, pricing, inventory quantities, and custom precious metal metafields (metal type, karat purity, gram mass, labor fees, and minimum price floor bounds).</li>
+        <li><strong>Configuration Settings:</strong> Custom pricing formulas, weight brackets, margin spreads, and API feed preferences.</li>
+      </ul>
+
+      <h3>B. Customer Scrap Buyback & Appraisal Data</h3>
+      <p>When store visitors submit scrap jewelry or bullion appraisal requests through the SpotMetal Storefront Buyback Widget (App Proxy), we collect:</p>
+      <ul>
+        <li>Customer contact details: Full name, email address, phone number, and physical mailing address (for trade-in shipping kits).</li>
+        <li>Item specifications: Metal type, estimated karat fineness, gram weight, photographs (if uploaded), and appraisal valuation estimates.</li>
+      </ul>
+
+      <h2>2. How We Use Collected Information</h2>
+      <p>We use the data strictly for legitimate operational purposes:</p>
+      <ul>
+        <li><strong>Live Spot Price Synchronization:</strong> Calculating variant prices continuously based on global market feeds (XAU, XAG, XPT, XPD) and writing updates to your Shopify catalog via Shopify GraphQL Admin API.</li>
+        <li><strong>Formula Valuation:</strong> Executing mathematical markup equations, karat multipliers (8K–24K), tiered weight brackets, and hard margin floor safeguards.</li>
+        <li><strong>Trade-In Order Management:</strong> Processing customer scrap buyback requests, creating shadow appraisal items with <code>BB-*</code> SKUs, and generating official Shopify Draft Orders for merchant payouts.</li>
+        <li><strong>Service Communication & Auditing:</strong> Sending critical rate sync alerts, subscription updates, and maintaining immutable audit log records.</li>
+      </ul>
+
+      <h2>3. Data Protection & Security (AES-256 Encryption)</h2>
+      <p>We implement industry-leading technical and organizational security measures:</p>
+      <ul>
+        <li><strong>Encryption at Rest:</strong> All proprietary custom market data provider API keys and sensitive tokens are encrypted using <strong>AES-256-GCM</strong> with unique 96-bit Initialization Vectors (IV).</li>
+        <li><strong>Encryption in Transit:</strong> All communications between Shopify, our application servers, and external rate feeds are encrypted using <strong>TLS 1.3</strong>.</li>
+        <li><strong>Access Controls:</strong> Role-based access controls, continuous vulnerability scans, and strict database isolation per store partition.</li>
+      </ul>
+
+      <h2>4. Mandatory Shopify GDPR Webhook Compliance</h2>
+      <p>SpotMetal is fully compliant with Shopify's mandatory data protection and GDPR requirements. Our servers automatically process the following statutory webhooks in real time:</p>
+
+      <div class="p-6 rounded-2xl bg-[#1A1B20] border border-white/10 space-y-4 my-6">
+        <div>
+          <h4 class="text-sm font-mono font-bold text-amber-400">1. customers/data_request</h4>
+          <p class="text-xs text-slate-300 mt-1">When a customer requests a copy of their stored data from the merchant, SpotMetal packages all trade-in appraisal records associated with that customer ID and securely delivers them to the merchant within statutory timeframes.</p>
+        </div>
+        <div class="pt-3 border-t border-white/5">
+          <h4 class="text-sm font-mono font-bold text-amber-400">2. customers/redact</h4>
+          <p class="text-xs text-slate-300 mt-1">When a customer requests erasure of their personal data, SpotMetal immediately purges all customer names, emails, phone numbers, and addresses from our buyback order tables.</p>
+        </div>
+        <div class="pt-3 border-t border-white/5">
+          <h4 class="text-sm font-mono font-bold text-amber-400">3. shop/redact</h4>
+          <p class="text-xs text-slate-300 mt-1">48 hours after an app uninstall event, SpotMetal permanently and irreversibly deletes all stored store records, product cache, formulas, audit logs, and settings from our database.</p>
+        </div>
+      </div>
+
+      <h2>5. Third-Party Service Providers</h2>
+      <p>We only share data with essential third-party infrastructure providers necessary to operate the App:</p>
+      <ul>
+        <li><strong>Shopify Inc.:</strong> Platform hosting, OAuth authentication, GraphQL API, and App Billing.</li>
+        <li><strong>Market Data Providers:</strong> European Central Bank (ECB), Edelmetalle.de, GoldAPI.io, Metals-API (rates are ingested anonymously without transmitting merchant or customer identifiers).</li>
+        <li><strong>Cloud Infrastructure:</strong> PostgreSQL database hosting in secure SOC 2 Type II certified data centers.</li>
+      </ul>
+
+      <h2>6. Your Rights (GDPR & CCPA/CPRA)</h2>
+      <p>Depending on your jurisdiction, you and your store customers hold the following legal rights regarding personal data:</p>
+      <ul>
+        <li><strong>Right to Access:</strong> Request a full copy of the data we hold about you.</li>
+        <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete records.</li>
+        <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> Request complete deletion of your data.</li>
+        <li><strong>Right to Restrict Processing:</strong> Request suspension of data processing under certain circumstances.</li>
+      </ul>
+
+      <h2>7. Contact Information</h2>
+      <p>If you have any questions, privacy inquiries, or wish to exercise your data rights, please contact our Data Protection Officer:</p>
+      <div class="p-6 rounded-2xl bg-[#1A1B20] border border-white/10 space-y-2 font-mono text-xs text-slate-300">
+        <div><strong>SpotMetal Technologies / QByteSoft</strong></div>
+        <div>Email: <a href="mailto:support@qbytesoft.com" class="text-amber-400 underline">support@qbytesoft.com</a></div>
+        <div>WhatsApp Live Desk: <a href="https://api.whatsapp.com/send/?phone=8801611032464&text=Hello+Spotmetal+Support%2C+I+need+help+with+privacy.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="text-emerald-400 underline">+880 1611-032464</a></div>
+        <div>Website: <a href="https://spotmetal.app" class="text-amber-400 underline">https://spotmetal.app</a></div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

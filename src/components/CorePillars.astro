@@ -1,0 +1,79 @@
+---
+const pillars = [
+  {
+    icon: "🧮",
+    tag: "FORMULA & BRACKETS",
+    title: "Mathematical Precision at Scale",
+    description: "Set tiered weight brackets (e.g. 0–5g: +25%, >20g: +12%) with automated karat fineness multipliers (8K–24K) and hard margin floor safeguards.",
+    badge: "100% Margin Safe",
+    accentBg: "from-amber-500/10 to-transparent",
+    accentBorder: "group-hover:border-amber-400/50"
+  },
+  {
+    icon: "🔄",
+    tag: "CIRCULAR BUYBACKS",
+    title: "Two-Way Trade-In Storefront",
+    description: "Embed customer appraisal calculators on your product pages. Inbound scrap gold submissions queue directly in your app to issue 1-click Shopify Draft Orders.",
+    badge: "Circular Revenue",
+    accentBg: "from-amber-500/10 to-transparent",
+    accentBorder: "group-hover:border-amber-400/50"
+  },
+  {
+    icon: "⚖️",
+    tag: "TAX & COMPLIANCE",
+    title: "Differential Taxation (§25a)",
+    description: "Comply with German and European differential taxation rules (§25a UStG) for margin-scheme bullion and vintage jewelry with full immutable audit trails.",
+    badge: "EU §25a Compliant",
+    accentBg: "from-emerald-500/10 to-transparent",
+    accentBorder: "group-hover:border-emerald-400/50"
+  }
+];
+---
+
+<section id="features" class="parallax-sheet py-28 md:py-36 px-4 sm:px-6 lg:px-8 bg-[#131417] text-white border-t border-white/10 rounded-t-[44px] sm:rounded-t-[60px] shadow-[0_-30px_70px_rgba(0,0,0,0.7)] -mt-16 sm:-mt-20 relative z-30 transition-transform">
+  <div class="text-center max-w-3xl mx-auto mb-20">
+    <div class="tag-label text-slate-400 mb-3">
+      THE SPOTMETAL ENGINE
+    </div>
+    <h2 class="text-3xl sm:text-5xl font-title text-white tracking-tight leading-tight">
+      Engineered for Precious <span class="italic font-normal text-amber-400">Metal Merchants</span>
+    </h2>
+    <p class="mt-4 text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+      A complete ecosystem built specifically for jewelers, bullion dealers, refiners, and pawnshops selling precious metals on Shopify.
+    </p>
+  </div>
+
+  <div class="pillars-grid grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    {pillars.map(pillar => (
+      <div class={`pillar-card bg-[#1A1B20]/90 bg-gradient-to-b ${pillar.accentBg} border border-white/10 ${pillar.accentBorder} rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-2xl shadow-black/80 group backdrop-blur-xl`}>
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="text-4xl p-3 rounded-2xl bg-[#131417] border border-white/5 group-hover:scale-110 transition-transform">
+              {pillar.icon}
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 border border-white/10 text-slate-300">
+              {pillar.badge}
+            </span>
+          </div>
+
+          <div class="tag-label text-amber-400">
+            {pillar.tag}
+          </div>
+
+          <h3 class="text-2xl font-title text-white font-medium">
+            {pillar.title}
+          </h3>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+            {pillar.description}
+          </p>
+        </div>
+
+        <div class="pt-6 mt-6 border-t border-white/5 flex items-center gap-2 text-xs font-mono font-medium text-slate-400 group-hover:text-amber-400 transition-colors">
+          <span>Learn more in documentation</span>
+          <span>→</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

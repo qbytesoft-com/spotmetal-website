@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Terms and Conditions — SpotMetal"
+  description="SpotMetal Terms and Conditions. Standard Terms of Service fully compliant with Shopify App Store requirements."
+>
+  <Header />
+
+  <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-12">
+    <!-- Breadcrumb & Header -->
+    <div class="space-y-4 pb-8 border-b border-white/10">
+      <nav class="flex items-center gap-2 text-xs font-mono text-slate-400">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-amber-400 font-semibold">Terms & Conditions</span>
+      </nav>
+
+      <div class="tag-label text-[#FF5E36] font-mono">
+        LEGAL TERMS OF SERVICE
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-title text-white font-medium tracking-tight">
+        SpotMetal Terms & Conditions
+      </h1>
+
+      <div class="flex items-center gap-4 text-xs font-mono text-slate-400 pt-1">
+        <span>📅 Effective Date: January 1, 2026</span>
+        <span>•</span>
+        <span>⚖️ Shopify App Store Compliant</span>
+      </div>
+    </div>
+
+    <!-- Main Legal Content -->
+    <div class="docs-content max-w-none font-sans text-slate-200 leading-[1.85] space-y-8">
+      <p class="lead text-lg text-slate-200">
+        These Terms and Conditions ("Terms", "Agreement") govern your access to and use of the SpotMetal application ("App", "Service"), developed and operated by SpotMetal Technologies ("SpotMetal", "we", "us"). By installing, connecting, or using SpotMetal via the Shopify App Store, you ("Merchant", "User", "you") agree to be bound by these Terms.
+      </p>
+
+      <h2>1. Acceptance of Terms & Shopify Ecosystem</h2>
+      <p>
+        By installing the App from the Shopify App Store, you agree to comply with these Terms, our <a href="/privacy" class="text-amber-400 underline">Privacy Policy</a>, and Shopify's Partner and App Store terms. If you do not agree to these Terms, you must immediately uninstall the App from your Shopify store.
+      </p>
+
+      <h2>2. Description of Services</h2>
+      <p>SpotMetal provides software tools designed for precious metal jewelers, bullion dealers, and scrap recyclers on the Shopify platform, including:</p>
+      <ul>
+        <li><strong>Real-Time Spot Price Synchronization:</strong> Automated catalog price recalculation based on live commodities feeds for Gold (XAU), Silver (XAG), Platinum (XPT), and Palladium (XPD).</li>
+        <li><strong>Dynamic Formula Engine:</strong> Mathematical modeling incorporating karat multipliers (8K–24K), fine weight normalization (grams/troy oz), tiered weight brackets, and craftsmanship fabrication fees.</li>
+        <li><strong>Theme App Extensions:</strong> Live Ticker Marquee, PDP Trade-In Buttons, Storefront Buyback Calculator, and Physical Retail Location Availability blocks.</li>
+        <li><strong>Circular Buyback System:</strong> Scrap customer appraisal intake via App Proxy, shadow product creation (<code>BB-*</code>), and 1-click Shopify Draft Order generation.</li>
+      </ul>
+
+      <h2>3. Subscription Billing, Free Trial & Cancellations</h2>
+      <p>All subscription charges for SpotMetal are processed strictly through Shopify's official Billing API (<code>RecurringApplicationCharge</code>) and will appear on your unified Shopify monthly invoice:</p>
+      <ul>
+        <li><strong>7-Day Free Trial:</strong> All paid plans include an unrestricted 7-day free trial starting from the moment you approve the plan in Shopify Admin. You will not be charged if you uninstall before the trial expires.</li>
+        <li><strong>Recurring Billing:</strong> Upon expiration of the 7-day trial, your selected plan (Monthly or Annual) will be billed automatically via Shopify.</li>
+        <li><strong>Upgrades & Downgrades:</strong> Plan changes take effect immediately with prorated billing handled automatically by Shopify.</li>
+        <li><strong>Cancellation:</strong> You may cancel your subscription at any time by uninstalling the App from your Shopify Admin (<strong>Settings > Apps and sales channels > Uninstall</strong>). No further charges will be billed by SpotMetal.</li>
+        <li><strong>Refunds:</strong> Refund requests are evaluated on a case-by-case basis in accordance with Shopify App Store developer guidelines.</li>
+      </ul>
+
+      <h2>4. Market Data Disclaimers & Price Floor Protection</h2>
+      <div class="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 my-6 text-sm">
+        <strong>⚠️ Commodity Market Volatility Notice:</strong> Global precious metal commodities prices fluctuate continuously. SpotMetal ingests rates from reputable international market data providers (e.g. LBMA, ECB, Edelmetalle.de, GoldAPI.io). While we strive for sub-minute accuracy and high data integrity, SpotMetal does not guarantee zero latency during extreme market halts, exchange circuit breakers, or third-party upstream feed outages.
+      </div>
+      <p>
+        <strong>Merchant Responsibility for Floor Bounds:</strong> Merchants are strongly advised to configure appropriate <code>minimumPrice</code> safeguards and weight brackets within SpotMetal formulas to prevent catalog items from selling below wholesale replacement costs during sudden market flash crashes.
+      </p>
+
+      <h2>5. Merchant Responsibilities & Acceptable Use</h2>
+      <p>As a merchant using SpotMetal, you agree to:</p>
+      <ul>
+        <li>Provide accurate product attributes (karat purity, metal type, gram mass) in your Shopify catalog.</li>
+        <li>Comply with local hallmarking, consumer protection, and precious metals trading laws in your jurisdiction.</li>
+        <li>Not reverse-engineer, decompile, or attempt to circumvent API rate limits or security vaults of the App.</li>
+        <li>Ensure customer scrap buyback payouts and tax disclosures (such as EU §25a UStG differential taxation) adhere to statutory tax regulations.</li>
+      </ul>
+
+      <h2>6. Service Availability & Support (99.9% Uptime Target)</h2>
+      <p>
+        SpotMetal targets 99.9% application uptime, backed by automated health checks, redundant database replicas, and rate-limit aware worker queues. Technical support is provided via:
+      </p>
+      <ul>
+        <li>Email Support: <a href="mailto:support@qbytesoft.com" class="text-amber-400 underline">support@qbytesoft.com</a> (Standard response within 24 hours).</li>
+        <li>Live WhatsApp Engineer Support: Dedicated integration engineers available for formula calibration and onboarding.</li>
+      </ul>
+
+      <h2>7. Intellectual Property</h2>
+      <p>
+        SpotMetal Technologies retains all rights, title, and interest in and to the App, including all software, source code, UI designs, documentation, trademarks, and 3D brand assets.
+      </p>
+
+      <h2>8. Limitation of Liability</h2>
+      <p>
+        To the maximum extent permitted by applicable law, SpotMetal Technologies shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, revenue, data, or goodwill arising out of or related to your use of the App, market feed delays, or third-party provider downtime. Our maximum aggregate liability shall not exceed the total fees paid by you for the App in the twelve (12) months preceding the claim.
+      </p>
+
+      <h2>9. Governing Law & Contact</h2>
+      <p>
+        These Terms shall be governed by and construed in accordance with the laws governing software commercial licensing, without regard to conflict of law principles.
+      </p>
+      <div class="p-6 rounded-2xl bg-[#1A1B20] border border-white/10 space-y-2 font-mono text-xs text-slate-300">
+        <div><strong>SpotMetal Technologies / QByteSoft</strong></div>
+        <div>Email: <a href="mailto:support@qbytesoft.com" class="text-amber-400 underline">support@qbytesoft.com</a></div>
+        <div>WhatsApp Live Desk: <a href="https://api.whatsapp.com/send/?phone=8801611032464&text=Hello+Spotmetal+Support%2C+I+have+a+legal+inquiry.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="text-emerald-400 underline">+880 1611-032464</a></div>
+        <div>Website: <a href="https://spotmetal.app" class="text-amber-400 underline">https://spotmetal.app</a></div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

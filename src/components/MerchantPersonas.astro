@@ -1,0 +1,56 @@
+---
+const personas = [
+  {
+    role: "Bullion & Coin Dealers",
+    tag: "HIGH VOLUME SPREADS",
+    benefit: "Eliminate slippage on high-value investment bars and sovereign minted coins. Set tiered markups based on order quantity and exact spot fluctuations.",
+    stat: "0.01g Precision",
+    icon: "🪙"
+  },
+  {
+    role: "Fine Jewelry Designers",
+    tag: "MULTI-KARAT RETAIL",
+    benefit: "Effortlessly manage 10K, 14K, 18K, and 24K gold variants. Combine metal spot cost with dynamic gem labor and fabrication pricing models.",
+    stat: "Multi-Variant Sync",
+    icon: "💎"
+  },
+  {
+    role: "Refiners & Pawn Recyclers",
+    tag: "CIRCULAR SCRAP BUYBACK",
+    benefit: "Capture customer scrap metal submissions through your online storefront. Offer transparent payout brackets and generate draft orders instantly.",
+    stat: "1-Click Payouts",
+    icon: "⚖️"
+  }
+];
+---
+
+<section class="parallax-sheet py-28 md:py-36 px-4 sm:px-6 lg:px-8 bg-[#131417] text-white border-t border-white/10 rounded-t-[44px] sm:rounded-t-[60px] shadow-[0_-30px_70px_rgba(0,0,0,0.7)] -mt-16 sm:-mt-20 relative z-20 transition-transform">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="tag-label text-amber-400 mb-3">
+      BUILT FOR YOUR INDUSTRY
+    </div>
+    <h2 class="text-3xl sm:text-5xl font-title text-white tracking-tight leading-tight">
+      Tailored for Every <span class="italic font-normal text-amber-400">Precious Metal Workflow</span>
+    </h2>
+    <p class="mt-4 text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+      Whether you deal in minted bullion bars, custom engagement rings, or recycled scrap gold, SpotMetal scales to your operation.
+    </p>
+  </div>
+
+  <div class="personas-grid grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    {personas.map(p => (
+      <div class="persona-card bg-[#1A1B20]/90 border border-white/10 rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/40 shadow-2xl backdrop-blur-xl">
+        <div class="space-y-5">
+          <div class="text-4xl">{p.icon}</div>
+          <div class="tag-label text-amber-400">{p.tag}</div>
+          <h3 class="text-2xl font-title text-white font-medium">{p.role}</h3>
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">{p.benefit}</p>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/5 flex items-center justify-between">
+          <span class="text-xs font-mono font-bold text-slate-400">Capability:</span>
+          <span class="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">{p.stat}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

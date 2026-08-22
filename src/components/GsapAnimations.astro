@@ -1,0 +1,147 @@
+---
+---
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  async function initSmoothScrollAndParallax() {
+    try {
+      const { default: Lenis } = await import('https://cdn.jsdelivr.net/npm/lenis@1.1.20/+esm');
+      
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    } catch (e) {
+      console.warn('Lenis fallback to native', e);
+    }
+
+    // 1. Hero Entrance
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    heroTl
+      .fromTo('.hero-badge', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.1 })
+      .fromTo('.hero-title', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 }, '-=0.5')
+      .fromTo('.hero-subhead', { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6')
+      .fromTo('.hero-actions', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, '-=0.5')
+      .fromTo('.hero-trust', { opacity: 0 }, { opacity: 1, duration: 0.7 }, '-=0.4')
+      .fromTo('.hero-mockup', { y: 40, opacity: 0, scale: 0.98 }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: 'power2.out' }, '-=0.6');
+
+    // 2. Physical Sheet Parallax Stacking (Dark & Luminous Peach Sheets)
+    const sheets = document.querySelectorAll('.parallax-sheet');
+    sheets.forEach((sheet, idx) => {
+      // Current sheet glides smoothly up over previous
+      gsap.fromTo(sheet,
+        { y: 80 },
+        {
+          scrollTrigger: {
+            trigger: sheet,
+            start: 'top 95%',
+            end: 'top 50%',
+            scrub: 1.2
+          },
+          y: 0,
+          ease: 'power1.out'
+        }
+      );
+
+      // Inner content subtle floating parallax
+      const innerContainer = sheet.querySelector('.max-w-5xl, .max-w-7xl, .showcase-row');
+      if (innerContainer) {
+        gsap.fromTo(innerContainer,
+          { y: 30 },
+          {
+            scrollTrigger: {
+              trigger: sheet,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              scrub: 1.5
+            },
+            y: -20,
+            ease: 'none'
+          }
+        );
+      }
+    });
+
+    // 3. Ambient Spotlights Float
+    gsap.utils.toArray('.ambient-spotlight').forEach((spot: any, i) => {
+      gsap.to(spot, {
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 2
+        },
+        y: (i % 2 === 0 ? 180 : -180),
+        ease: 'none'
+      });
+    });
+
+    // 4. Feature Showcase Cards Parallax Drift
+    const showcases = document.querySelectorAll('.showcase-row');
+    showcases.forEach(row => {
+      const card = row.querySelector('.bg-white\\/95, .bg-white');
+      if (card) {
+        gsap.fromTo(card,
+          { y: 40 },
+          {
+            scrollTrigger: {
+              trigger: row,
+              start: 'top 85%',
+              end: 'bottom 15%',
+              scrub: 1.5
+            },
+            y: -30,
+            ease: 'none'
+          }
+        );
+      }
+    });
+
+    // 5. Watermark Parallax Reveal in Footer
+    const watermark = document.querySelector('footer .text-\\[17vw\\]');
+    if (watermark) {
+      gsap.fromTo(watermark,
+        { y: 50, opacity: 0.8 },
+        {
+          scrollTrigger: {
+            trigger: 'footer',
+            start: 'top bottom',
+            end: 'bottom bottom',
+            scrub: 1
+          },
+          y: 0,
+          opacity: 1,
+          ease: 'none'
+        }
+      );
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  if (document.readyState === 'complete') {
+    initSmoothScrollAndParallax();
+  } else {
+    window.addEventListener('load', initSmoothScrollAndParallax);
+  }
+
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      ScrollTrigger.refresh();
+    });
+  }
+</script>

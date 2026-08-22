@@ -1,0 +1,193 @@
+---
+---
+
+<section class="relative pt-16 pb-24 md:pt-28 md:pb-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center z-10">
+  <!-- Tag Label (Matching Reference Style) -->
+  <div class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-white/10 text-slate-300 tag-label mb-8 shadow-sm backdrop-blur-md">
+    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+    <span>THE #1 PRECIOUS METALS ENGINE FOR SHOPIFY</span>
+  </div>
+
+  <!-- Editorial Luxury Serif Title -->
+  <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-title text-white tracking-tight max-w-5xl leading-[1.12]">
+    Turn Live Gold Spot Rates into <span class="gradient-gold-text italic font-normal">Automated Profit.</span>
+  </h1>
+
+  <!-- Subheading -->
+  <p class="hero-subhead mt-6 text-lg sm:text-xl text-slate-300 max-w-3xl font-sans leading-relaxed">
+    Connect your Shopify catalog to real-time spot prices for Gold, Silver, Platinum, and Palladium. Automatically calculate variant prices based on exact karat purities, fabrication fees, and tiered weight brackets with hard margin floor safeguards.
+  </p>
+
+  <!-- CTA Action Buttons -->
+  <div class="hero-actions mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+    <a 
+      href="https://apps.shopify.com/spotmetal-pricing-buyback" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="w-full sm:w-auto gradient-gold-btn px-9 py-4 rounded-xl text-base font-bold text-slate-950 font-sans shadow-xl shadow-amber-500/25 text-center"
+    >
+      Start 7-Day Free Trial
+    </a>
+    <a 
+      href="#showcase" 
+      class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-medium text-white glass-card hover:bg-slate-800 transition-all text-center font-sans"
+    >
+      Explore Feature Demos →
+    </a>
+  </div>
+
+  <!-- Trust Signals -->
+  <div class="hero-trust mt-8 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-400 font-sans">
+    <span class="text-amber-400">★★★★★</span>
+    <span><strong>4.9/5 Rating</strong> on Shopify App Store • Built for Shopify Plus • No Credit Card Required</span>
+  </div>
+
+  <!-- Interactive Hero UI Mockup Card -->
+  <div class="hero-mockup mt-16 w-full max-w-5xl glass-card rounded-3xl p-6 sm:p-10 shadow-2xl shadow-black/90 text-left border border-white/10">
+    <!-- Window Bar -->
+    <div class="flex items-center justify-between pb-6 border-b border-white/5">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+        <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+        <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+      </div>
+      <div class="text-xs sm:text-sm text-slate-400 font-medium font-sans hidden sm:block">
+        SpotMetal Dynamic Pricing Engine • Connected to Shopify GraphQL
+      </div>
+      <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>AUTO-SYNC ACTIVE</span>
+      </div>
+    </div>
+
+    <!-- Interactive Grid -->
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Left Config Controls -->
+      <div class="lg:col-span-7 bg-[#070A0F]/90 rounded-2xl p-6 sm:p-7 border border-white/5 space-y-5">
+        <div class="tag-label text-amber-400">
+          LIVE PRICING FORMULA SIMULATOR
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1.5 font-sans">Target Metal</label>
+            <select id="sim-metal" class="w-full bg-[#111827] border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none font-sans">
+              <option value="gold-18k" selected>Gold • 18K (750 Purity)</option>
+              <option value="gold-24k">Gold • 24K (999 Bullion)</option>
+              <option value="gold-14k">Gold • 14K (585 Purity)</option>
+              <option value="gold-10k">Gold • 10K (417 Purity)</option>
+              <option value="silver">Silver • 999 Fine Silver</option>
+              <option value="platinum">Platinum • 950 Fine</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1.5 font-sans">Fine Weight (Grams)</label>
+            <input 
+              id="sim-weight" 
+              type="number" 
+              value="14.50" 
+              step="0.5" 
+              class="w-full bg-[#111827] border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none font-mono"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1.5 font-sans">Margin Markup (%)</label>
+            <input 
+              id="sim-margin" 
+              type="number" 
+              value="18" 
+              class="w-full bg-[#111827] border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none font-mono"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-slate-400 mb-1.5 font-sans">Labor / Setting Fee ($)</label>
+            <input 
+              id="sim-labor" 
+              type="number" 
+              value="35.00" 
+              class="w-full bg-[#111827] border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-amber-400 focus:outline-none font-mono"
+            />
+          </div>
+        </div>
+
+        <div class="pt-3 flex items-center justify-between text-xs text-slate-400 border-t border-white/5 font-sans">
+          <span>Minimum Price Floor: <strong class="text-emerald-400 font-mono">$850.00 (Protected)</strong></span>
+          <span class="text-slate-500 font-mono">Multiplier: 0.750</span>
+        </div>
+      </div>
+
+      <!-- Right Calculated Result Card -->
+      <div class="lg:col-span-5 bg-gradient-to-br from-[#1E293B] to-[#111827] border border-amber-500/25 rounded-2xl p-7 flex flex-col justify-between h-full space-y-5 shadow-lg">
+        <div>
+          <div class="tag-label text-slate-400">
+            Live Calculated Price
+          </div>
+          <div class="mt-2 text-4xl sm:text-5xl font-bold text-amber-400 font-title" id="sim-output-price">
+            $1,248.50
+          </div>
+          <div class="mt-1 text-xs text-slate-400 font-sans" id="sim-output-compare">
+            Compare-at MSRP: $1,475.00 (+18%)
+          </div>
+        </div>
+
+        <div class="bg-[#070A0F]/90 rounded-xl p-4 border border-white/5 space-y-1.5">
+          <div class="flex items-center gap-2 text-xs text-emerald-400 font-mono font-medium">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Synced to Shopify Variant: Instant</span>
+          </div>
+          <div class="text-[11px] text-slate-400 font-mono">
+            SKU: G-RNG-18K-04 • Bulk GraphQL Mutation
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const metalEl = document.getElementById('sim-metal') as HTMLSelectElement;
+  const weightEl = document.getElementById('sim-weight') as HTMLInputElement;
+  const marginEl = document.getElementById('sim-margin') as HTMLInputElement;
+  const laborEl = document.getElementById('sim-labor') as HTMLInputElement;
+  const priceOutput = document.getElementById('sim-output-price');
+  const compareOutput = document.getElementById('sim-output-compare');
+
+  const spotRates: Record<string, { spotPerGram: number; multiplier: number }> = {
+    'gold-18k': { spotPerGram: 94.59, multiplier: 0.75 },
+    'gold-24k': { spotPerGram: 94.59, multiplier: 0.999 },
+    'gold-14k': { spotPerGram: 94.59, multiplier: 0.585 },
+    'gold-10k': { spotPerGram: 94.59, multiplier: 0.417 },
+    'silver': { spotPerGram: 1.05, multiplier: 0.999 },
+    'platinum': { spotPerGram: 31.67, multiplier: 0.95 },
+  };
+
+  function updatePrice() {
+    if (!metalEl || !weightEl || !marginEl || !laborEl || !priceOutput) return;
+
+    const metalKey = metalEl.value;
+    const { spotPerGram, multiplier } = spotRates[metalKey] || spotRates['gold-18k'];
+    const weight = parseFloat(weightEl.value) || 14.5;
+    const margin = parseFloat(marginEl.value) || 18;
+    const labor = parseFloat(laborEl.value) || 35;
+
+    const materialValue = spotPerGram * multiplier * weight;
+    const calculated = (materialValue * (1 + margin / 100)) + labor;
+    const compareAt = calculated * 1.18;
+
+    priceOutput.innerText = `$${calculated.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (compareOutput) {
+      compareOutput.innerText = `Compare-at MSRP: $${compareAt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (+18%)`;
+    }
+  }
+
+  [metalEl, weightEl, marginEl, laborEl].forEach(el => {
+    el?.addEventListener('input', updatePrice);
+  });
+</script>

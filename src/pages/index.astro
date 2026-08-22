@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import DualMarquee from '../components/DualMarquee.astro';
+import Metrics from '../components/Metrics.astro';
+import ProblemSolution from '../components/ProblemSolution.astro';
+import CorePillars from '../components/CorePillars.astro';
+import FeatureShowcases from '../components/FeatureShowcases.astro';
+import MerchantPersonas from '../components/MerchantPersonas.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  <main class="flex-1">
+    <!-- 1. Hero (Dark) -->
+    <Hero />
+
+    <!-- 2. Dual Infinite Marquee & Metrics (Dark Accent) -->
+    <DualMarquee />
+    <Metrics />
+
+    <!-- 3. Profit vs Loss Matrix (Off-White Light) -->
+    <ProblemSolution />
+
+    <!-- 4. The SpotMetal Engine / 3 Pillars (Dark) -->
+    <CorePillars />
+
+    <!-- 5. Feature Showcases & Admin Block (Off-White Light) -->
+    <FeatureShowcases />
+
+    <!-- 6. Target Merchant Personas (Dark) -->
+    <MerchantPersonas />
+
+    <!-- 7. Transparent Pricing (Off-White Light) -->
+    <Pricing />
+
+    <!-- 8. FAQs & Final CTA (Dark) -->
+    <Faq />
+    <FinalCta />
+  </main>
+  <Footer />
+</Layout>

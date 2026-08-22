@@ -1,0 +1,39 @@
+---
+const metrics = [
+  {
+    value: "< 1 Minute",
+    label: "Real-Time Sync Frequency",
+    color: "text-amber-400"
+  },
+  {
+    value: "8K to 24K",
+    label: "Karat Multipliers Supported",
+    color: "text-white"
+  },
+  {
+    value: "15+ Currencies",
+    label: "Live ECB & Manual FX Lock",
+    color: "text-white"
+  },
+  {
+    value: "100% Native",
+    label: "Zero Theme Liquid Edits",
+    color: "text-emerald-400"
+  }
+];
+---
+
+<section class="metrics-container w-full bg-[#111827]/40 border-y border-white/5 py-14 px-4 sm:px-6 lg:px-8 relative z-10 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    {metrics.map(metric => (
+      <div class="metric-item flex flex-col items-center justify-center p-4">
+        <div class={`text-3xl sm:text-5xl font-extrabold font-title ${metric.color}`}>
+          {metric.value}
+        </div>
+        <div class="mt-2 text-xs sm:text-sm font-medium text-slate-400 font-sans tracking-wide">
+          {metric.label}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

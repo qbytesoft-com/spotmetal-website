@@ -1,0 +1,100 @@
+---
+const faqs = [
+  {
+    q: "How fast do product prices update when spot metal rates change?",
+    a: "On the Advanced Plan, prices recalculate in sub-minute intervals (under 60 seconds) whenever London (LBMA) or New York feeds move. Pro plans update on a 15-minute cadence, and Free plans sync hourly."
+  },
+  {
+    q: "What happens if spot gold crashes? Will I sell below my acquisition cost?",
+    a: "Never. SpotMetal enforces hard minimumPrice bounds on every formula. If a market flash crash occurs, the engine automatically caps your retail price at your specified floor, preventing wholesale losses."
+  },
+  {
+    q: "How does the Circular Buyback widget work for customer scrap gold?",
+    a: "The Buyback Liquid widget embeds directly on your store pages. Customers enter their item's weight and karat to receive an instant transparent appraisal. When submitted, an inbound trade-in record queues in your admin console to generate an official 1-click Shopify Draft Order payout."
+  },
+  {
+    q: "Do you support German and EU Differential Taxation (§25a UStG)?",
+    a: "Yes. SpotMetal includes full native support for §25a UStG margin taxation schemes for pre-owned jewelry, antique coins, and bullion dealers, maintaining audit-proof calculation logs."
+  },
+  {
+    q: "Can I use my own custom metal spot API or private feed?",
+    a: "Absolutely. You can use our high-availability default feeds (Edelmetalle.de) or enter custom API keys for GoldAPI.io, Metals-API, or private refinery JSON endpoints stored with AES-256 GCM encryption."
+  },
+  {
+    q: "Is there a free trial?",
+    a: "Yes! All paid plans (Professional and Advanced) include a full-featured 7-day free trial. You can test live formula updates, buyback workflows, and variant syncing with zero risk."
+  }
+];
+---
+
+<section id="faq" class="parallax-sheet py-28 md:py-36 px-4 sm:px-6 lg:px-8 bg-[#131417] text-white border-t border-white/10 rounded-t-[44px] sm:rounded-t-[60px] shadow-[0_-30px_70px_rgba(0,0,0,0.7)] -mt-16 sm:-mt-20 relative z-20 transition-transform">
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="tag-label text-amber-400 mb-3">
+      FREQUENTLY ASKED QUESTIONS
+    </div>
+    <h2 class="text-3xl sm:text-5xl font-title text-white tracking-tight leading-tight">
+      Everything You Need to <span class="italic font-normal text-amber-400">Know</span>
+    </h2>
+    <p class="mt-4 text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+      Answers to common questions about spot feeds, formula math, margins, and Shopify integration.
+    </p>
+  </div>
+
+  <div class="faq-list max-w-3xl mx-auto space-y-4">
+    {faqs.map((faq, index) => (
+      <div class="faq-item bg-[#1A1B20]/90 border border-white/10 rounded-2xl p-6 transition-all duration-200 hover:border-amber-400/30">
+        <button 
+          type="button" 
+          class="faq-trigger w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+          aria-expanded="false"
+          data-index={index}
+        >
+          <span class="text-lg font-bold font-title text-white">{faq.q}</span>
+          <span class="faq-icon text-xl text-amber-400 transition-transform duration-200 flex-shrink-0">+</span>
+        </button>
+        <div class="faq-answer hidden pt-4 text-slate-300 text-sm sm:text-base font-sans leading-relaxed border-t border-white/5 mt-4">
+          {faq.a}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const triggers = document.querySelectorAll('.faq-trigger');
+  triggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.parentElement?.querySelector('.faq-answer');
+      const icon = btn.querySelector('.faq-icon');
+
+      triggers.forEach(otherBtn => {
+        if (otherBtn !== btn) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherBtn.parentElement?.querySelector('.faq-answer')?.classList.add('hidden');
+          const otherIcon = otherBtn.querySelector('.faq-icon');
+          if (otherIcon) {
+            otherIcon.textContent = '+';
+            (otherIcon as HTMLElement).style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        answer?.classList.add('hidden');
+        if (icon) {
+          icon.textContent = '+';
+          (icon as HTMLElement).style.transform = 'rotate(0deg)';
+        }
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        answer?.classList.remove('hidden');
+        if (icon) {
+          icon.textContent = '−';
+          (icon as HTMLElement).style.transform = 'rotate(180deg)';
+        }
+      }
+    });
+  });
+</script>
