@@ -5,5 +5,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://spotmetal.app'
+  site: 'https://spotmetal.qbytesoft.com',
+  trailingSlash: 'ignore',
+  build: {
+    format: 'directory'
+  }
 });
