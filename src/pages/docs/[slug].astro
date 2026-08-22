@@ -27,6 +27,8 @@ const nextArticle = currentIndex < allSlugs.length - 1 ? docArticles[allSlugs[cu
 <DocsLayout 
   title={article.title}
   description={article.description}
+  slug={article.slug}
+  category={article.categoryTitle}
 >
   <div class="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start w-full max-w-full min-w-0 overflow-x-hidden">
     <!-- Left Navigation Sidebar (Desktop + Mobile Drawer) -->

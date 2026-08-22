@@ -5,12 +5,119 @@ import GsapAnimations from '../components/GsapAnimations.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonicalUrl?: string;
 }
 
 const {
   title = "SpotMetal — Live Gold & Precious Metal Pricing for Shopify",
-  description = "Connect Shopify stores to real-time Gold, Silver, Platinum, and Palladium spot prices. Automate dynamic jewelry variant pricing, protect margin floors, and power a circular buyback trade-in loop."
+  description = "Connect Shopify stores to real-time Gold, Silver, Platinum, and Palladium spot prices. Automate dynamic jewelry variant pricing, protect margin floors, and power a circular buyback trade-in loop.",
+  image = "/banners/spotmetal_brand_feature_overview_1787440758826.jpg",
+  canonicalUrl = "https://spotmetal.qbytesoft.com"
 } = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://spotmetal.qbytesoft.com/#software",
+      "name": "SpotMetal",
+      "applicationCategory": "BusinessApplication, FinTech, E-Commerce Software",
+      "operatingSystem": "Shopify / Web Browser",
+      "softwareVersion": "2.4.0",
+      "description": "Real-time spot precious metal pricing, dynamic karat purity calculation (8K-24K), and scrap jewelry buyback trade-in appraisals for Shopify & Shopify Plus.",
+      "url": "https://spotmetal.qbytesoft.com",
+      "image": "https://spotmetal.qbytesoft.com/spotmetal-3d-icon.jpg",
+      "screenshot": "https://spotmetal.qbytesoft.com/banners/desktop_banner_spot_sync_1787439547210.jpg",
+      "offers": {
+        "@type": "Offer",
+        "price": "49.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://apps.shopify.com/spotmetal-pricing-buyback",
+        "seller": {
+          "@type": "Organization",
+          "name": "SpotMetal Technologies"
+        }
+      },
+      "featureList": [
+        "Sub-minute live spot price sync for Gold, Silver, Platinum & Palladium",
+        "Dynamic Karat purity formula engine (8K-24K, 925 Sterling Silver)",
+        "Hard minimumPrice wholesale margin floor safeguards",
+        "Circular scrap jewelry buyback calculator with 1-click Draft Orders",
+        "Multi-currency ECB exchange rates with spread markup controls",
+        "Multi-location retail boutique branch stock availability"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://spotmetal.qbytesoft.com/#organization",
+      "name": "SpotMetal Technologies",
+      "url": "https://spotmetal.qbytesoft.com",
+      "logo": "https://spotmetal.qbytesoft.com/spotmetal-3d-icon.jpg",
+      "sameAs": [
+        "https://github.com/qbytesoft-com/spotmetal-website",
+        "https://apps.shopify.com/spotmetal-pricing-buyback"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Technical Support & Sales",
+        "email": "support@qbytesoft.com",
+        "telephone": "+8801611032464",
+        "availableLanguage": ["English", "German", "French", "Spanish", "Arabic"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://spotmetal.qbytesoft.com/#website",
+      "url": "https://spotmetal.qbytesoft.com",
+      "name": "SpotMetal",
+      "publisher": {
+        "@id": "https://spotmetal.qbytesoft.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://spotmetal.qbytesoft.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does SpotMetal calculate live product prices on Shopify?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SpotMetal connects your Shopify catalog to live commodities exchange feeds (LBMA & GoldAPI). Our formula engine takes metal purity (8K–24K, 925 Silver), fine weight, fabrication fees, and retail markup to recalculate variant prices in real time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will sudden market price drops cause my items to sell below wholesale cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SpotMetal enforces hard minimumPrice floor boundaries. If the live spot rate falls below your configured floor, the app locks the price at your safety threshold to prevent below-cost selling."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the customer scrap buyback trade-in feature work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SpotMetal embeds an appraisal calculator on your storefront. Customers select their metal type, karat purity, and weight to receive an instant cash or store credit offer. Submissions automatically create isolated BB-* shadow products and 1-click Shopify Draft Orders."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SpotMetal compatible with Shopify Theme 2.0 and Shopify Plus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SpotMetal is 100% built with native Shopify App Bridge, Theme 2.0 app blocks, App Proxy, and GraphQL API batching, with zero legacy Liquid theme modifications."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -20,13 +127,41 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/jpeg" href="/spotmetal-3d-icon.jpg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="keywords" content="shopify gold price app, live spot gold price sync shopify, dynamic karat gold formula shopify, shopify jewelry scrap buyback calculator, precious metals live ticker shopify theme, bullion price automation shopify, lbma gold live feed shopify, margin floor guard jewelry ecommerce" />
+    <meta name="author" content="SpotMetal Technologies" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/spotmetal-3d-icon.jpg" />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="SpotMetal" />
+
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Agent & LLM Discovery Standards -->
+    <link rel="llms-txt" href="/llms.txt" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="application/json" href="/.well-known/ai-plugin.json" title="AI Plugin Manifest" />
+    <link rel="alternate" type="application/json" href="/.well-known/mcp.json" title="MCP Server Card" />
+
+    <!-- JSON-LD Structured Data for AEO & Google SGE -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body class="bg-[#070A0F] text-slate-100 min-h-screen flex flex-col font-sans overflow-x-clip relative selection:bg-amber-500/30 selection:text-white">
     <!-- Ambient Background Spotlights -->

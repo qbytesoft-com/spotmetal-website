@@ -7,12 +7,74 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  slug?: string;
+  category?: string;
 }
 
 const {
   title = "SpotMetal Documentation & Merchant Wiki",
-  description = "Learn how to connect Shopify stores to live spot gold prices, configure dynamic karat formulas, and automate circular buyback trade-ins."
+  description = "Learn how to connect Shopify stores to live spot gold prices, configure dynamic karat formulas, and automate circular buyback trade-ins.",
+  slug = "",
+  category = "Documentation"
 } = Astro.props;
+
+const canonicalUrl = slug 
+  ? `https://spotmetal.qbytesoft.com/docs/${slug}`
+  : `https://spotmetal.qbytesoft.com/docs`;
+
+const docsStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": `${title} — SpotMetal Documentation`,
+      "description": description,
+      "url": canonicalUrl,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalUrl
+      },
+      "inLanguage": "en-US",
+      "author": {
+        "@type": "Organization",
+        "name": "SpotMetal Engineering Team",
+        "url": "https://spotmetal.qbytesoft.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SpotMetal Technologies",
+        "logo": "https://spotmetal.qbytesoft.com/spotmetal-3d-icon.jpg"
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "SpotMetal"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://spotmetal.qbytesoft.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://spotmetal.qbytesoft.com/docs"
+        },
+        ...(slug ? [{
+          "@type": "ListItem",
+          "position": 3,
+          "name": title,
+          "item": canonicalUrl
+        }] : [])
+      ]
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -22,8 +84,39 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <link rel="icon" type="image/jpeg" href="/spotmetal-3d-icon.jpg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Primary Meta Tags -->
     <title>{title} — SpotMetal Docs</title>
+    <meta name="title" content={`${title} — SpotMetal Docs`} />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={`${title} — SpotMetal Docs`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/banners/desktop_banner_spot_sync_1787439547210.jpg" />
+    <meta property="og:site_name" content="SpotMetal Documentation Wiki" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={`${title} — SpotMetal Docs`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/banners/desktop_banner_spot_sync_1787439547210.jpg" />
+
+    <!-- Agent & LLM Discovery Standards -->
+    <link rel="llms-txt" href="/llms.txt" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="application/json" href="/.well-known/ai-plugin.json" title="AI Plugin Manifest" />
+    <link rel="alternate" type="application/json" href="/.well-known/mcp.json" title="MCP Server Card" />
+
+    <!-- TechArticle & Breadcrumbs Schema for AEO & Google SGE -->
+    <script type="application/ld+json" set:html={JSON.stringify(docsStructuredData)} />
   </head>
   <body class="bg-[#131417] text-slate-100 min-h-screen flex flex-col font-sans overflow-x-clip relative selection:bg-amber-500/30 selection:text-white w-full max-w-full">
     <!-- Ambient Spotlights -->
