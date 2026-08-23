@@ -9,6 +9,7 @@
   font-display: swap;
 }
 
+
 @theme {
   /* Rich Matte Charcoal Dark */
   --color-charcoal-950: #0E0F12;
@@ -55,7 +56,13 @@ body {
   position: relative;
 }
 
-h1, h2, h3, h4, h5, h6, .font-title {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-title {
   font-family: "Inter Display", "Inter Display Placeholder", "Inter", sans-serif;
   letter-spacing: -0.025em;
   font-weight: 700;
@@ -122,13 +129,23 @@ h1, h2, h3, h4, h5, h6, .font-title {
 
 /* Infinite Marquee Animations */
 @keyframes marqueeLeft {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes marqueeRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .animate-marquee-left {
@@ -212,7 +229,8 @@ h1, h2, h3, h4, h5, h6, .font-title {
   margin-bottom: 1.75rem;
 }
 
-.docs-content ul, .docs-content ol {
+.docs-content ul,
+.docs-content ol {
   margin-bottom: 1.75rem;
   padding-left: 1.75rem;
   color: #E2E8F0;
@@ -293,4 +311,3 @@ h1, h2, h3, h4, h5, h6, .font-title {
   line-height: 1.75;
   color: #FECDD3;
 }
-
