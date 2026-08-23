@@ -1,0 +1,27 @@
+/*
+  Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/mcp.json>; rel="mcp-server", </.well-known/ai-plugin.json>; rel="ai-plugin", </llms.txt>; rel="describedby"; type="text/markdown", </docs>; rel="service-doc", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/openid-configuration>; rel="openid-configuration"
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization, Accept
+  X-Content-Type-Options: nosniff
+  Vary: Accept
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/*
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/openapi.yaml
+  Content-Type: application/yaml; charset=utf-8
+  Access-Control-Allow-Origin: *

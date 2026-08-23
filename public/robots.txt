@@ -6,6 +6,9 @@ Allow: /
 Disallow: /api/
 Disallow: /scratch/
 
+# Content Signals for AI & Search (https://contentsignals.org)
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
 # Autonomous AI Agents & LLM Web Crawlers
 User-agent: GPTBot
 Allow: /
@@ -40,8 +43,7 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# Agent & LLM Documentation Endpoints
-# Specification: https://llmstxt.org
+# Agent & LLM Discovery Endpoints (RFC 8288 & llmstxt.org)
 LLMs-Txt: https://spotmetal.qbytesoft.com/llms.txt
 LLMs-Full-Txt: https://spotmetal.qbytesoft.com/llms-full.txt
 
