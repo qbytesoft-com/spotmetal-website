@@ -1,0 +1,21 @@
+{
+  "protocol": "x402",
+  "version": "1.0",
+  "facilitator": "https://spotmetal.qbytesoft.com/api/x402",
+  "supported_networks": [
+    "base",
+    "ethereum",
+    "polygon"
+  ],
+  "accepted_currencies": [
+    "USDC",
+    "USDT",
+    "ETH"
+  ],
+  "rates": {
+    "live_spot_rates_query": "0.001 USDC",
+    "karat_formula_calculation": "0.002 USDC",
+    "scrap_buyback_appraisal": "0.005 USDC"
+  },
+  "docs": "https://spotmetal.qbytesoft.com/docs"
+}

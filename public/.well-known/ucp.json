@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ucp.dev/schemas/v1/profile.json",
+  "version": "1.0.0",
+  "organization": {
+    "name": "SpotMetal Technologies",
+    "url": "https://spotmetal.qbytesoft.com",
+    "contact": "support@qbytesoft.com"
+  },
+  "services": [
+    {
+      "id": "precious-metals-pricing",
+      "type": "commerce:pricing:live-commodities",
+      "endpoint": "https://spotmetal.qbytesoft.com/api/rates",
+      "capabilities": [
+        "live_spot_feeds",
+        "dynamic_karats",
+        "margin_floor_protection",
+        "multi_currency_fx"
+      ]
+    },
+    {
+      "id": "circular-scrap-buyback",
+      "type": "commerce:trade-in:appraisal",
+      "endpoint": "https://spotmetal.qbytesoft.com/api/buyback/appraise",
+      "capabilities": [
+        "instant_melt_calculation",
+        "store_credit_payout",
+        "draft_order_generation"
+      ]
+    }
+  ],
+  "supported_platforms": [
+    "shopify",
+    "shopify_plus"
+  ],
+  "documentation": "https://spotmetal.qbytesoft.com/docs"
+}

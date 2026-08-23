@@ -3,6 +3,7 @@ import '../styles/global.css';
 import DocsHeader from '../components/docs/DocsHeader.astro';
 import SearchModal from '../components/docs/SearchModal.astro';
 import Footer from '../components/Footer.astro';
+import WebMcpProvider from '../components/WebMcpProvider.astro';
 
 interface Props {
   title?: string;
@@ -160,5 +161,6 @@ const docsStructuredData = {
     </section>
 
     <Footer />
+    <WebMcpProvider />
   </body>
 </html>

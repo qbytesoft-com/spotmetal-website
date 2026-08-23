@@ -1,0 +1,62 @@
+{
+  "specVersion": "1.0.0",
+  "host": {
+    "name": "SpotMetal",
+    "url": "https://spotmetal.qbytesoft.com",
+    "description": "Automated precious metals pricing & buyback engine on Shopify",
+    "contact": "support@qbytesoft.com"
+  },
+  "entries": [
+    {
+      "id": "urn:air:spotmetal.qbytesoft.com:tools:spot-rates",
+      "displayName": "Live Spot Rates Feed",
+      "description": "Get real-time commodity spot rates for Gold (XAU), Silver (XAG), Platinum (XPT), and Palladium (XPD).",
+      "type": "application/json",
+      "url": "https://spotmetal.qbytesoft.com/api/rates",
+      "representativeQueries": [
+        "What is the live gold spot price per gram?",
+        "Get current silver spot rate in USD",
+        "Fetch real-time precious metals commodities rates",
+        "How much is 1 troy oz of gold right now?"
+      ]
+    },
+    {
+      "id": "urn:air:spotmetal.qbytesoft.com:tools:karat-pricing",
+      "displayName": "Karat Pricing Formula Engine",
+      "description": "Calculate exact variant retail pricing for 8K-24K gold and 925 sterling silver jewelry with wholesale floor boundaries.",
+      "type": "application/json",
+      "url": "https://spotmetal.qbytesoft.com/api/calculate",
+      "representativeQueries": [
+        "Calculate price for 18K gold ring weighing 10 grams",
+        "Compute 14K gold jewelry pricing with manufacturing making charges",
+        "What is the retail price of 24K gold bullion with a minimum price floor?",
+        "How to calculate dynamic karat prices on Shopify?"
+      ]
+    },
+    {
+      "id": "urn:air:spotmetal.qbytesoft.com:tools:scrap-buyback",
+      "displayName": "Circular Scrap Jewelry Buyback Appraisal",
+      "description": "Appraise customer trade-in scrap gold and generate instant cash offer valuations and Shopify Draft Order payouts.",
+      "type": "application/json",
+      "url": "https://spotmetal.qbytesoft.com/api/buyback/appraise",
+      "representativeQueries": [
+        "How much is 25 grams of 14K scrap gold worth?",
+        "Calculate instant cash buyout offer for old gold jewelry",
+        "Trade-in scrap gold for store credit voucher on Shopify",
+        "Appraise customer scrap bullion trade-in"
+      ]
+    },
+    {
+      "id": "urn:air:spotmetal.qbytesoft.com:mcp:server-card",
+      "displayName": "SpotMetal Model Context Protocol (MCP) Server",
+      "description": "Expose live spot calculation and scrap appraisal tools for AI coding and commerce agents via MCP.",
+      "type": "application/json",
+      "url": "https://spotmetal.qbytesoft.com/.well-known/mcp.json",
+      "representativeQueries": [
+        "Connect SpotMetal MCP tools to Claude or ChatGPT",
+        "Call calculate_spot_price tool in MCP",
+        "AI agent precious metals tool execution"
+      ]
+    }
+  ]
+}

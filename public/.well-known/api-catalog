@@ -1,0 +1,39 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://spotmetal.qbytesoft.com/api",
+      "service-desc": [
+        {
+          "href": "https://spotmetal.qbytesoft.com/.well-known/openapi.yaml",
+          "type": "application/yaml",
+          "title": "SpotMetal OpenAPI 3.1 Specification"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://spotmetal.qbytesoft.com/docs",
+          "type": "text/html",
+          "title": "SpotMetal Technical Documentation Wiki"
+        },
+        {
+          "href": "https://spotmetal.qbytesoft.com/llms.txt",
+          "type": "text/plain",
+          "title": "LLMs Agent Documentation Index"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://spotmetal.qbytesoft.com/api/health",
+          "type": "application/json",
+          "title": "SpotMetal Service Health & Uptime Status"
+        }
+      ],
+      "oauth-protected-resource": [
+        {
+          "href": "https://spotmetal.qbytesoft.com/.well-known/oauth-protected-resource",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

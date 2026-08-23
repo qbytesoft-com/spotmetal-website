@@ -1,0 +1,16 @@
+{
+  "resource": "https://spotmetal.qbytesoft.com/api",
+  "authorization_servers": [
+    "https://spotmetal.qbytesoft.com"
+  ],
+  "scopes_supported": [
+    "spotmetal:rates.read",
+    "spotmetal:pricing.calculate",
+    "spotmetal:buyback.appraise",
+    "spotmetal:catalog.sync"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://spotmetal.qbytesoft.com/docs"
+}

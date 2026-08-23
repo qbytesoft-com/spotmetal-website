@@ -1,8 +1,8 @@
 /*
-  Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/mcp.json>; rel="mcp-server", </.well-known/ai-plugin.json>; rel="ai-plugin", </llms.txt>; rel="describedby"; type="text/markdown", </docs>; rel="service-doc", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/openid-configuration>; rel="openid-configuration"
+  Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/mcp.json>; rel="mcp-server", </.well-known/ai-plugin.json>; rel="ai-plugin", </llms.txt>; rel="describedby"; type="text/markdown", </docs>; rel="service-doc", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/openid-configuration>; rel="openid-configuration", </.well-known/ai-catalog.json>; rel="ai-catalog", </.well-known/acp.json>; rel="acp", </.well-known/ucp.json>; rel="ucp"
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, POST, OPTIONS
-  Access-Control-Allow-Headers: Content-Type, Authorization, Accept
+  Access-Control-Allow-Headers: Content-Type, Authorization, Accept, X-Payment, x402-payment
   X-Content-Type-Options: nosniff
   Vary: Accept
 
@@ -20,6 +20,26 @@
 
 /.well-known/api-catalog
   Content-Type: application/linkset+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/oauth-protected-resource
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/openid-configuration
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/oauth-authorization-server
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/ucp
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/.well-known/x402
+  Content-Type: application/json; charset=utf-8
   Access-Control-Allow-Origin: *
 
 /.well-known/openapi.yaml

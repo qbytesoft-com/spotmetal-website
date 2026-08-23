@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import GsapAnimations from '../components/GsapAnimations.astro';
+import WebMcpProvider from '../components/WebMcpProvider.astro';
 
 interface Props {
   title?: string;
@@ -171,5 +172,6 @@ const structuredData = {
 
     <slot />
     <GsapAnimations />
+    <WebMcpProvider />
   </body>
 </html>
