@@ -1,46 +1,79 @@
 ---
-const comparisons = [
+const comparisonCategories = [
   {
-    feature: "Price Synchronization",
-    pain: "Manual updates 1–2 days late",
-    painLoss: "-$120 / sale slippage",
-    gain: "Sub-minute live spot auto-sync",
-    gainProfit: "100% real-time accuracy"
+    category: "Price Synchronization & Math",
+    items: [
+      {
+        feature: "Price Sync Cadence",
+        info: "Frequency at which catalog prices recalculate against live LBMA & NY spot rates.",
+        manual: "Manual (1–2 days late)",
+        spotmetal: "Sub-minute live auto-sync"
+      },
+      {
+        feature: "Multi-Karat Math (8K–24K)",
+        info: "Automated purity multiplier from 333 (8K) to 999.9 fine bullion.",
+        manual: "Spreadsheet formula errors",
+        spotmetal: "Instant precision purity engine"
+      },
+      {
+        feature: "Multi-Currency Live FX Rates",
+        info: "European Central Bank live conversion with manual exchange rate locks.",
+        manual: false,
+        spotmetal: "15+ Currencies Auto-Converted"
+      }
+    ]
   },
   {
-    feature: "Multi-Karat Math (8K–24K)",
-    pain: "Spreadsheet formula errors",
-    painLoss: "Underpricing high-karat gold",
-    gain: "Instant precision purity engine",
-    gainProfit: "Zero calculation mistakes"
+    category: "Margin Protection & Cost Safeguards",
+    items: [
+      {
+        feature: "Wholesale Margin Floor Guard",
+        info: "Hard minimum price boundaries preventing below-cost sales during market flash crashes.",
+        manual: false,
+        spotmetal: true
+      },
+      {
+        feature: "Tiered Weight Gram Brackets",
+        info: "Dynamic percentage and fabrication fees scaled by fine gram weight brackets.",
+        manual: "Flat markup only",
+        spotmetal: "Dynamic gram bracket engine"
+      },
+      {
+        feature: "Differential Tax (§25a UStG)",
+        info: "European and German margin taxation scheme compliance for pre-owned jewelry & bullion.",
+        manual: false,
+        spotmetal: true
+      }
+    ]
   },
   {
-    feature: "Wholesale Margin Protection",
-    pain: "No floor bounds during market drops",
-    painLoss: "Accidental below-cost sales",
-    gain: "Hard minimumPrice floor guard",
-    gainProfit: "Guaranteed gross margin"
-  },
-  {
-    feature: "Tiered Weight Brackets",
-    pain: "Flat pricing ignores fabrication cost",
-    painLoss: "Unprofitable heavy pieces",
-    gain: "Dynamic gram bracket multipliers",
-    gainProfit: "+15% extra margin on heavy items"
-  },
-  {
-    feature: "Customer Scrap Trade-Ins",
-    pain: "Missed buyback opportunities",
-    painLoss: "Lost scrap to competitors",
-    gain: "Storefront appraisal calculator",
-    gainProfit: "Turnkey circular revenue loop"
-  },
-  {
-    feature: "Shopify Catalog Workflow",
-    pain: "Switching back & forth between tabs",
-    painLoss: "Hours wasted updating variants",
-    gain: "Native Product Admin Preact block",
-    gainProfit: "1-Click instant configuration"
+    category: "Storefront & Catalog Integrations",
+    items: [
+      {
+        feature: "Native Shopify Admin Block",
+        info: "Preact UI block embedded directly inside the native Shopify product editing screen.",
+        manual: false,
+        spotmetal: true
+      },
+      {
+        feature: "Storefront Live Spot Ticker",
+        info: "High-performance customer-facing ticker bar displaying live precious metal rates.",
+        manual: false,
+        spotmetal: true
+      },
+      {
+        feature: "Customer Scrap Buyback Widget",
+        info: "Drop-in storefront appraisal calculator for customer scrap jewelry trade-ins.",
+        manual: false,
+        spotmetal: true
+      },
+      {
+        feature: "1-Click Payout Draft Orders",
+        info: "Instant generation of official Shopify Draft Orders for customer scrap payouts.",
+        manual: false,
+        spotmetal: true
+      }
+    ]
   }
 ];
 ---
@@ -51,87 +84,97 @@ const comparisons = [
     <div class="tag-label text-[#FF5E36] mb-3 tracking-widest font-bold">
       PROFIT VS. LOSS COMPARISON
     </div>
-    <h2 class="text-3xl sm:text-5xl font-title text-slate-950 tracking-tight leading-tight">
-      Stop Leaving Money <span class="italic font-normal gradient-warm-text">on the Table</span>
+    <h2 class="text-3xl sm:text-5xl font-title text-slate-950 tracking-tight leading-tight font-bold">
+      Stop Leaving Money <span class="gradient-warm-text font-bold">on the Table</span>
     </h2>
     <p class="mt-4 text-base sm:text-lg text-slate-600 font-sans leading-relaxed">
       See exactly how manual precious metals pricing loses you margin versus the SpotMetal automated profit engine.
     </p>
   </div>
 
-  <!-- High-Contrast Clean White Comparison Matrix Card -->
-  <div class="max-w-5xl mx-auto bg-white/95 rounded-3xl border border-amber-200/80 overflow-hidden shadow-2xl shadow-amber-950/5 backdrop-blur-md">
-    <!-- Table Column Headers -->
-    <div class="grid grid-cols-12 bg-[#FFFDFB] border-b border-amber-100 p-5 sm:p-6 items-center text-sm font-sans font-bold text-slate-900">
-      <div class="col-span-12 sm:col-span-4 text-slate-500 uppercase tracking-wider text-xs font-mono">
-        FEATURE / AREA
-      </div>
-      <div class="col-span-12 sm:col-span-4 mt-3 sm:mt-0 flex items-center">
-        <span class="px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-          <span class="text-rose-600 font-bold">✕</span>
-          <span>Manual (Without SpotMetal)</span>
-        </span>
-      </div>
-      <div class="col-span-12 sm:col-span-4 mt-3 sm:mt-0 flex items-center">
-        <span class="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-          <span class="text-emerald-600 font-bold">✓</span>
-          <span>With SpotMetal Engine</span>
-        </span>
-      </div>
+  <!-- Minimal Clean Comparison Table (Matching Reference Design) -->
+  <div class="max-w-5xl mx-auto bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xl shadow-amber-950/5">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse min-w-[620px]">
+        <!-- Table Column Headers -->
+        <thead>
+          <tr class="border-b border-slate-200/90 text-sm font-sans font-bold text-slate-900">
+            <th class="py-4 px-6 w-5/12 font-bold text-slate-950">
+              Feature Categories
+            </th>
+            <th class="py-4 px-6 w-3.5/12 text-center font-bold text-slate-900 border-l border-slate-100">
+              Manual / Basic
+            </th>
+            <th class="py-4 px-6 w-3.5/12 text-center font-bold text-slate-950 bg-[#F3F4F6] border-l border-slate-200">
+              SpotMetal Engine
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {comparisonCategories.map((group, groupIdx) => (
+            <>
+              <!-- Category Header Row -->
+              <tr class={`bg-white border-t ${groupIdx > 0 ? 'border-t-slate-200' : 'border-t-slate-100'} border-b border-slate-200/90`}>
+                <td colspan="3" class="py-3 px-6 text-sm font-bold font-sans text-slate-950 bg-slate-50/50 tracking-tight">
+                  {group.category}
+                </td>
+              </tr>
+
+              <!-- Items inside Category -->
+              {group.items.map((item, rowIdx) => (
+                <tr class="border-b border-slate-100 hover:bg-slate-50/40 transition-colors">
+                  <!-- Feature Name + Info Tooltip -->
+                  <td class="py-3.5 px-6 text-sm font-medium text-slate-900">
+                    <div class="flex items-center gap-2">
+                      <span>{item.feature}</span>
+                      <span 
+                        class="inline-flex items-center justify-center w-4 h-4 rounded-full text-[10px] text-slate-400 border border-slate-300 cursor-help hover:text-slate-700 hover:border-slate-400 transition-colors flex-shrink-0" 
+                        title={item.info}
+                        aria-label={item.info}
+                      >
+                        ⓘ
+                      </span>
+                    </div>
+                  </td>
+
+                  <!-- Manual Column (Middle) -->
+                  <td class="py-3.5 px-6 text-center text-sm font-sans text-slate-600 border-l border-slate-100">
+                    {typeof item.manual === 'boolean' ? (
+                      item.manual ? (
+                        <span class="text-slate-900 font-bold text-base">✓</span>
+                      ) : (
+                        <span class="text-slate-400 font-light text-base">✕</span>
+                      )
+                    ) : (
+                      <span class="text-slate-700 text-xs sm:text-sm font-normal">{item.manual}</span>
+                    )}
+                  </td>
+
+                  <!-- SpotMetal Column (Right, Shaded Background) -->
+                  <td class="py-3.5 px-6 text-center text-sm font-sans text-slate-950 bg-[#F3F4F6] border-l border-slate-200/70">
+                    {typeof item.spotmetal === 'boolean' ? (
+                      item.spotmetal ? (
+                        <span class="text-slate-950 font-bold text-base">✓</span>
+                      ) : (
+                        <span class="text-slate-400 font-light text-base">✕</span>
+                      )
+                    ) : (
+                      <span class="text-slate-950 text-xs sm:text-sm font-semibold">{item.spotmetal}</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
     </div>
 
-    <!-- Comparison Rows -->
-    <div class="divide-y divide-amber-100/60 bg-white">
-      {comparisons.map((row, idx) => (
-        <div class={`grid grid-cols-12 p-5 sm:p-6 items-center gap-4 sm:gap-6 transition-colors hover:bg-[#FFF8F4] ${idx % 2 === 0 ? 'bg-white' : 'bg-[#FFFBF8]'}`}>
-          <!-- Feature Name -->
-          <div class="col-span-12 sm:col-span-4">
-            <div class="text-base font-bold text-slate-950 font-sans tracking-tight">
-              {row.feature}
-            </div>
-          </div>
-
-          <!-- Pain / Loss Column (Aligned with icon and badge) -->
-          <div class="col-span-12 sm:col-span-4 flex flex-col justify-center">
-            <div class="flex items-start gap-2.5">
-              <span class="text-rose-600 font-bold text-sm mt-0.5 flex-shrink-0">✕</span>
-              <div class="space-y-1.5">
-                <div class="text-sm font-medium text-slate-700 font-sans leading-snug">
-                  {row.pain}
-                </div>
-                <div>
-                  <span class="inline-block px-2.5 py-0.5 rounded-md bg-rose-50 border border-rose-200/80 text-rose-700 text-xs font-sans font-semibold">
-                    Loss: {row.painLoss}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Gain / Profit Column (Aligned with icon and badge) -->
-          <div class="col-span-12 sm:col-span-4 flex flex-col justify-center">
-            <div class="flex items-start gap-2.5">
-              <span class="text-emerald-600 font-bold text-sm mt-0.5 flex-shrink-0">✓</span>
-              <div class="space-y-1.5">
-                <div class="text-sm font-bold text-slate-950 font-sans leading-snug">
-                  {row.gain}
-                </div>
-                <div>
-                  <span class="inline-block px-2.5 py-0.5 rounded-md bg-emerald-50 border border-emerald-200/80 text-emerald-700 text-xs font-sans font-semibold">
-                    Gain: {row.gainProfit}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- Bottom Highlight Bar -->
-    <div class="bg-gradient-to-r from-rose-50/70 via-[#FFFDFB] to-emerald-50/70 border-t border-amber-100 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+    <!-- Bottom Highlight Summary Bar -->
+    <div class="bg-slate-50 border-t border-slate-200 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
       <div class="space-y-1">
-        <div class="tag-label text-slate-500 font-mono">
+        <div class="tag-label text-slate-500 font-mono text-xs font-bold">
           AVERAGE MERCHANT IMPACT
         </div>
         <div class="text-base sm:text-lg font-bold font-title text-slate-950">
@@ -141,7 +184,7 @@ const comparisons = [
       <a 
         href="https://apps.shopify.com/spotmetal-pricing-buyback" 
         target="_blank" 
-        rel="noopener noreferrer"
+        rel="noopener noreferrer" 
         class="gradient-gold-btn px-7 py-3.5 rounded-xl text-sm font-bold text-slate-950 font-sans shadow-md whitespace-nowrap"
       >
         Automate My Store →

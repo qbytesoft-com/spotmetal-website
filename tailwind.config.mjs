@@ -25,8 +25,9 @@ export default {
         }
       },
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
-        sans: ['Inter', 'sans-serif'],
+        outfit: ['"Inter Display"', '"Inter Display Placeholder"', 'Inter', 'sans-serif'],
+        sans: ['"Inter Display"', '"Inter Display Placeholder"', 'Inter', 'sans-serif'],
+        title: ['"Inter Display"', '"Inter Display Placeholder"', 'Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {

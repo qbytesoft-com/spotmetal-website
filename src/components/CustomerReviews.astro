@@ -1,0 +1,148 @@
+---
+const reviews = [
+  {
+    author: "Private Upwork Client",
+    subtext: "Project completed via Upwork",
+    platform: "upwork",
+    verifiedBadge: "Verified Client",
+    stars: 5,
+    time: "3 days ago",
+    content: "SpotMetal transformed our gold jewelry pricing completely. We have over 1,200 variants across 10K, 14K, and 18K. The automated spot sync runs flawlessly every minute and eliminates spreadsheet errors entirely.",
+    project: "Precious Metals Pricing Automation"
+  },
+  {
+    author: "Shopify Merchant",
+    subtext: "Bullion & Coin Dealer (London)",
+    platform: "shopify",
+    verifiedBadge: "Verified Store",
+    stars: 5,
+    time: "1 week ago",
+    content: "The minimum price margin floor guard saved us during the recent gold market flash dip. It prevented accidental below-cost sales while keeping our live pricing 100% competitive on Google Shopping.",
+    project: "Shopify App Store Review"
+  },
+  {
+    author: "Private Upwork Client",
+    subtext: "Project completed via Upwork",
+    platform: "upwork",
+    verifiedBadge: "Verified Client",
+    stars: 5,
+    time: "2 weeks ago",
+    content: "The customer scrap trade-in calculator on our storefront is generating an extra $24k/month in secondary revenue. Customers enter their scrap gold grams and it auto-generates Shopify draft orders instantly.",
+    project: "Circular Scrap Buyback Engine"
+  },
+  {
+    author: "Shopify Merchant",
+    subtext: "Fine Jewelry & Gemstone Atelier",
+    platform: "shopify",
+    verifiedBadge: "Verified Store",
+    stars: 5,
+    time: "3 weeks ago",
+    content: "Super clean native Shopify Admin block. Our catalog managers didn't have to learn a complex third-party dashboard—they configure metal type and gram weight right inside the native product page.",
+    project: "Shopify App Store Review"
+  },
+  {
+    author: "Shopify Merchant",
+    subtext: "European Vintage & Antique Bullion",
+    platform: "shopify",
+    verifiedBadge: "Verified Store",
+    stars: 5,
+    time: "1 month ago",
+    content: "Automating §25a UStG differential margin taxation for our German store was effortless. The invoice audit trails are watertight for our tax accountants. Outstanding engineering support on WhatsApp too!",
+    project: "Differential Tax & Margin Scheme"
+  },
+  {
+    author: "Private Upwork Client",
+    subtext: "Project completed via Upwork",
+    platform: "upwork",
+    verifiedBadge: "Verified Client",
+    stars: 5,
+    time: "1 month ago",
+    content: "Flawless multi-currency FX integration. We sell bullion across USD, EUR, and GBP with custom ECB spreads. SpotMetal handles the exchange rate calculations without any catalog lag.",
+    project: "Multi-Currency Real-Time Sync"
+  }
+];
+
+const duplicatedReviews = [...reviews, ...reviews];
+---
+
+<section id="reviews" class="parallax-sheet py-28 md:py-36 bg-[#131417] text-white border-t border-white/10 rounded-t-[44px] sm:rounded-t-[60px] shadow-[0_-30px_70px_rgba(0,0,0,0.7)] -mt-16 sm:-mt-20 relative z-20 overflow-hidden transition-transform">
+  <!-- Section Title -->
+  <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-18 px-4 sm:px-6">
+    <div class="tag-label text-amber-400 mb-3 tracking-widest font-bold">
+      VERIFIED REPUTATION
+    </div>
+    <h2 class="text-3xl sm:text-5xl font-title text-white tracking-tight leading-tight font-bold">
+      What Customers <span class="text-amber-400 font-bold">Say</span>
+    </h2>
+    <p class="mt-4 text-base sm:text-lg text-slate-300 font-sans leading-relaxed">
+      See what precious metal dealers, fine jewelry retailers, and enterprise Shopify merchants say about their experience with SpotMetal.
+    </p>
+  </div>
+
+  <!-- 1-Row Minimal Infinite Auto-Scrolling Marquee -->
+  <div class="relative w-full overflow-hidden marquee-wrapper py-2">
+    <!-- Left and Right Gradient Edge Masks -->
+    <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-[#131417] to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-[#131417] to-transparent z-10 pointer-events-none"></div>
+
+    <div class="animate-marquee-left-slow flex gap-6 px-4">
+      {duplicatedReviews.map((review) => (
+        <div class="w-[340px] sm:w-[400px] flex-shrink-0 bg-[#18191E] border border-white/10 hover:border-amber-400/40 rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 shadow-xl group">
+          <div class="space-y-4">
+            <!-- Review Header: Avatar/Brand Logo + Name + Verified Badge -->
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                {review.platform === 'upwork' ? (
+                  <div class="w-10 h-10 rounded-xl bg-[#14A800]/10 border border-[#14A800]/25 flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <svg class="w-5 h-5 text-[#14A800] fill-current" viewBox="0 0 24 24">
+                      <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-3.057 0-5.32 2.158-5.918 5.163-1.086-1.62-1.89-3.565-2.345-5.385H6.974v7.359c0 1.579-1.285 2.864-2.864 2.864-1.58 0-2.864-1.285-2.864-2.864V4.796H0v7.359c0 3.398 2.766 6.164 6.164 6.164 3.398 0 6.164-2.766 6.164-6.164v-.695c.427 1.096 1.01 2.164 1.764 3.125l-1.503 7.07h3.359l1.094-5.146c1.077.625 2.297.986 3.52 1.002 3.844 0 6.974-3.13 6.974-6.973 0-3.844-3.13-6.974-6.975-6.974z"/>
+                    </svg>
+                  </div>
+                ) : (
+                  <div class="w-10 h-10 rounded-xl bg-[#96BF48]/10 border border-[#96BF48]/25 flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <svg class="w-5 h-5 text-[#96BF48] fill-current" viewBox="0 0 24 24">
+                      <path d="M15.337 2.163c-.02-.008-.052-.008-.073 0l-1.266.381c-.139.041-.212.18-.171.319.041.139.18.212.319.171l.983-.295 1.542 16.59-10.457-3.141-1.393-14.07 3.385.992c.142.042.29-.04.331-.183.042-.142-.04-.29-.183-.331l-3.666-1.074c-.07-.021-.144-.007-.202.037-.058.044-.092.113-.092.186l1.528 15.426c.008.082.056.154.129.19.073.036.16.035.233.001l11.458-5.32c.08-.037.13-.119.13-.207l-1.745-18.775c-.007-.08-.057-.149-.13-.182zm-2.883 5.485c-.073.032-.15.086-.226.164-.298.307-.468.749-.468 1.217 0 1.025.794 1.583 1.636 2.174.629.442 1.291.907 1.291 1.697 0 .59-.445 1.025-1.085 1.025-.769 0-1.255-.494-1.277-.517-.101-.107-.267-.113-.374-.012-.107.101-.113.267-.012.374.041.044.606.634 1.583.634.887 0 1.564-.613 1.564-1.464 0-1.127-.866-1.737-1.728-2.343-.591-.416-1.2-.844-1.2-1.528 0-.341.122-.647.336-.867.06-.062.115-.1.157-.121.059-.03.093-.036.1-.036.146 0 .265-.119.265-.265s-.119-.265-.265-.265c-.092 0-.256.027-.404.145z"/>
+                    </svg>
+                  </div>
+                )}
+                <div>
+                  <div class="font-title font-bold text-sm text-white group-hover:text-amber-400 transition-colors">
+                    {review.author}
+                  </div>
+                  <div class="text-[11px] text-slate-400 font-sans">
+                    {review.subtext}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Verified Pill -->
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-slate-300">
+                <span class="text-amber-400 text-xs">✓</span>
+                <span>{review.verifiedBadge}</span>
+              </span>
+            </div>
+
+            <!-- Star Rating & Timestamp -->
+            <div class="flex items-center justify-between text-xs pt-1">
+              <div class="flex items-center gap-1 text-amber-400 text-sm">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <span class="text-slate-400 font-mono text-[11px]">{review.time}</span>
+            </div>
+
+            <!-- Review Text -->
+            <p class="text-sm text-slate-300 font-sans leading-relaxed">
+              "{review.content}"
+            </p>
+          </div>
+
+          <!-- Bottom Metadata -->
+          <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span class="text-slate-400">Project / Scope:</span>
+            <span class="text-amber-400/90 font-medium">{review.project}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

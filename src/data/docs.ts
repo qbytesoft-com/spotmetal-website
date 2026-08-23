@@ -342,7 +342,7 @@ export const docArticles: Record<string, DocArticle> = {
     content: `
       <p class="lead text-lg text-slate-200">Follow this 5-step checklist to launch your first live-priced catalog item on Shopify.</p>
       <h2 id="step-1">Step 1: Verify Spot Feed Connection</h2>
-      <p>Ensure the status indicator in <strong>Settings > Rate Feeds</strong> shows <span class="text-emerald-400 font-mono font-bold">● Active</span>.</p>
+      <p>Ensure the status indicator in <strong>Settings > Rate Feeds</strong> shows <span class="text-amber-400 font-mono font-bold">● Active</span>.</p>
       <h2 id="step-2">Step 2: Create Your First Pricing Formula</h2>
       <p>Go to <strong>Pricing > New Formula</strong> and configure your retail markup and fabrication fees.</p>
       <h2 id="step-3">Step 3: Assign Metal & Purity to a Product</h2>
@@ -483,13 +483,13 @@ export const docArticles: Record<string, DocArticle> = {
             </tr>
           </thead>
           <tbody class="divide-y divide-white/5 text-slate-200 font-mono text-xs">
-            <tr><td class="py-3 px-4 text-amber-400 font-bold">24K (999.9)</td><td class="py-3 px-4">0.9999</td><td class="py-3 px-4">99.99%</td><td class="py-3 px-4 text-emerald-400 font-bold">$94.59 / g</td></tr>
-            <tr><td class="py-3 px-4 text-amber-400 font-bold">22K (916)</td><td class="py-3 px-4">0.9167</td><td class="py-3 px-4">91.67%</td><td class="py-3 px-4 text-emerald-400 font-bold">$86.72 / g</td></tr>
-            <tr><td class="py-3 px-4 text-amber-300 font-bold">18K (750)</td><td class="py-3 px-4">0.7500</td><td class="py-3 px-4">75.00%</td><td class="py-3 px-4 text-emerald-400 font-bold">$70.94 / g</td></tr>
-            <tr><td class="py-3 px-4 text-amber-300 font-bold">14K (585)</td><td class="py-3 px-4">0.5850</td><td class="py-3 px-4">58.50%</td><td class="py-3 px-4 text-emerald-400 font-bold">$55.34 / g</td></tr>
-            <tr><td class="py-3 px-4 text-amber-200 font-bold">10K (417)</td><td class="py-3 px-4">0.4170</td><td class="py-3 px-4">41.70%</td><td class="py-3 px-4 text-emerald-400 font-bold">$39.44 / g</td></tr>
-            <tr><td class="py-3 px-4 text-amber-200 font-bold">9K (375)</td><td class="py-3 px-4">0.3750</td><td class="py-3 px-4">37.50%</td><td class="py-3 px-4 text-emerald-400 font-bold">$35.47 / g</td></tr>
-            <tr><td class="py-3 px-4 text-amber-200 font-bold">8K (333)</td><td class="py-3 px-4">0.3333</td><td class="py-3 px-4">33.33%</td><td class="py-3 px-4 text-emerald-400 font-bold">$31.50 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-400 font-bold">24K (999.9)</td><td class="py-3 px-4">0.9999</td><td class="py-3 px-4">99.99%</td><td class="py-3 px-4 text-amber-300 font-bold">$94.59 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-400 font-bold">22K (916)</td><td class="py-3 px-4">0.9167</td><td class="py-3 px-4">91.67%</td><td class="py-3 px-4 text-amber-300 font-bold">$86.72 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-300 font-bold">18K (750)</td><td class="py-3 px-4">0.7500</td><td class="py-3 px-4">75.00%</td><td class="py-3 px-4 text-amber-300 font-bold">$70.94 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-300 font-bold">14K (585)</td><td class="py-3 px-4">0.5850</td><td class="py-3 px-4">58.50%</td><td class="py-3 px-4 text-amber-300 font-bold">$55.34 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-200 font-bold">10K (417)</td><td class="py-3 px-4">0.4170</td><td class="py-3 px-4">41.70%</td><td class="py-3 px-4 text-amber-300 font-bold">$39.44 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-200 font-bold">9K (375)</td><td class="py-3 px-4">0.3750</td><td class="py-3 px-4">37.50%</td><td class="py-3 px-4 text-amber-300 font-bold">$35.47 / g</td></tr>
+            <tr><td class="py-3 px-4 text-amber-200 font-bold">8K (333)</td><td class="py-3 px-4">0.3333</td><td class="py-3 px-4">33.33%</td><td class="py-3 px-4 text-amber-300 font-bold">$31.50 / g</td></tr>
           </tbody>
         </table>
       </div>
@@ -502,7 +502,7 @@ export const docArticles: Record<string, DocArticle> = {
         <li><strong>Raw Metal Value:</strong> $70.9429 * 8.50g = <strong>$603.01</strong></li>
         <li><strong>25% Premium:</strong> $603.01 * 0.25 = <strong>$150.75</strong></li>
         <li><strong>Fixed Setting Fee:</strong> <strong>$60.00</strong></li>
-        <li><strong>Total Calculated Price:</strong> $603.01 + $150.75 + $60.00 = <span class="text-emerald-400 font-bold font-mono">$813.76</span></li>
+        <li><strong>Total Calculated Price:</strong> $603.01 + $150.75 + $60.00 = <span class="text-amber-400 font-bold font-mono">$813.76</span></li>
       </ol>
     `
   },
@@ -810,7 +810,7 @@ export const docArticles: Record<string, DocArticle> = {
       <p class="lead text-lg text-slate-200">German and European tax laws permit antique jewelry, pre-owned bullion, and collector items to be taxed solely on the dealer's gross margin rather than the total sales price under §25a UStG.</p>
 
       <h2 id="what-is-25a">What is §25a UStG Differential Taxation?</h2>
-      <div class="p-4 rounded-xl bg-slate-900 border border-white/10 font-mono text-xs text-emerald-400 my-4">
+      <div class="p-4 rounded-xl bg-slate-900 border border-white/10 font-mono text-xs text-amber-300 my-4">
         VAT Payable = (Selling Price - Acquisition Buyback Cost) * (19 / 119)
       </div>
 

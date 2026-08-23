@@ -134,7 +134,7 @@ const nextArticle = currentIndex < allSlugs.length - 1 ? docArticles[allSlugs[cu
     btn.addEventListener('click', async () => {
       const code = pre.innerText;
       await navigator.clipboard.writeText(code);
-      btn.innerHTML = '<span class="text-emerald-400">✓</span><span class="text-emerald-400">Copied!</span>';
+      btn.innerHTML = '<span class="text-amber-400">✓</span><span class="text-amber-400">Copied!</span>';
       setTimeout(() => {
         btn.innerHTML = '<span>📋</span><span>Copy</span>';
       }, 2000);
